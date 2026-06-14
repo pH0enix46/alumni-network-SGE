@@ -2,6 +2,8 @@ import { Suspense } from "react";
 import { getRegistrations } from "@/app/_server/data-access";
 import { RegistrationFilter } from "@/app/_components/registration-filter";
 
+export const dynamic = "force-dynamic";
+
 export default function DashboardPage() {
   // We don't await here. We pass the promise to the component.
   const registrationsPromise = getRegistrations();

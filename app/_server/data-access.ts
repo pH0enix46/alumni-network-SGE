@@ -49,7 +49,7 @@ export async function secureApiFetch(
   {
     json = true,
     headers = {},
-    cache = "force-cache" as RequestCache,
+    cache = "no-store" as RequestCache,
     ...init
   }: RequestInit & { json?: boolean } = {},
 ) {
@@ -78,7 +78,7 @@ export async function getRegistrations() {
     const res = await secureApiFetch(
       `${API_BASE}/alumni-network?${query.toString()}`,
       {
-        next: { revalidate: 60 }, // ISR: revalidate every 60s, allows static build
+        cache: "no-store",
       },
     );
 

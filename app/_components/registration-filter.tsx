@@ -10,9 +10,10 @@ import {
   Database,
   Users,
   ChevronDown,
+  RotateCw,
 } from "lucide-react";
 import { format, isSameDay } from "date-fns";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import { RegistrationCard } from "./registration-card";
 import { logoutAction } from "@/app/_server/action";
 import { cn } from "@/lib/utils";
@@ -85,8 +86,18 @@ export function RegistrationFilter({
 }) {
   const registrations = use(registrationsPromise);
   const searchParams = useSearchParams();
+  const router = useRouter();
   const [currentPage, setCurrentPage] = useState(1);
+  const [isRefreshing, setIsRefreshing] = useState(false);
   const itemsPerPage = 10;
+
+  const handleRefresh = () => {
+    setIsRefreshing(true);
+    router.refresh();
+    setTimeout(() => {
+      setIsRefreshing(false);
+    }, 800);
+  };
 
   const search = searchParams.get("query") || "";
   const dateParam = searchParams.get("date");
@@ -357,7 +368,7 @@ export function RegistrationFilter({
       </div>
 
       {/* Total Summary */}
-      <div className="flex items-center gap-3 px-1">
+      <div className="flex items-center justify-between px-1 w-full">
         <div className="flex items-center gap-2.5 px-4 py-2 bg-white/6 border border-white/8 rounded-full backdrop-blur-md animate-in fade-in slide-in-from-left-4 duration-500">
           <Users className="h-4 w-4 text-primary" />
           <span className="text-white/50 text-[10px] font-bold uppercase tracking-widest">
@@ -368,6 +379,18 @@ export function RegistrationFilter({
             {registrations.length}
           </span>
         </div>
+
+        {/* Refresh Button */}
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={handleRefresh}
+          className="h-8 px-3 bg-white/6 border border-white/8 text-white/70 hover:text-white hover:bg-white/10 rounded-full cursor-pointer transition-all text-xs flex items-center"
+          disabled={isRefreshing}
+        >
+          <RotateCw className={cn("h-3.5 w-3.5 mr-1.5 text-primary", isRefreshing && "animate-spin")} />
+          {isRefreshing ? "Refreshing..." : "Refresh"}
+        </Button>
       </div>
 
       {/* Data List */}
