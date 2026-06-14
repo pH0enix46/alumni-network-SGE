@@ -333,10 +333,10 @@ export function RegistrationFilter({
           )}
 
           {/* Divider (Desktop) */}
-          <div className="hidden sm:block w-px h-6 bg-white/10 mx-2" />
+          {/* <div className="hidden sm:block w-px h-6 bg-white/10 mx-2" /> */}
 
           {/* Export Actions */}
-          <div className="flex items-center gap-2 w-full sm:w-auto">
+          {/* <div className="flex items-center gap-2 w-full sm:w-auto">
             <Button
               variant="outline"
               onClick={() => handleExport("excel")}
@@ -353,7 +353,7 @@ export function RegistrationFilter({
               <Database className="h-4 w-4 mr-2" />
               CRM
             </Button>
-          </div>
+          </div> */}
 
           {/* Logout Button */}
           <Button
