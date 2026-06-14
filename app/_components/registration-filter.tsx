@@ -245,8 +245,8 @@ export function RegistrationFilter({
             Alumni Network Portal
           </h1>
           <p className="text-white/40 text-sm sm:text-base max-w-xl mx-auto px-4">
-            Manage alumni registrations, check attendance status, and export
-            database records
+            Manage alumni registrations, check attendance status, and database
+            records
           </p>
         </div>
 
@@ -388,7 +388,12 @@ export function RegistrationFilter({
           className="h-8 px-3 bg-white/6 border border-white/8 text-white/70 hover:text-white hover:bg-white/10 rounded-full cursor-pointer transition-all text-xs flex items-center"
           disabled={isRefreshing}
         >
-          <RotateCw className={cn("h-3.5 w-3.5 mr-1.5 text-primary", isRefreshing && "animate-spin")} />
+          <RotateCw
+            className={cn(
+              "h-3.5 w-3.5 mr-1.5 text-primary",
+              isRefreshing && "animate-spin",
+            )}
+          />
           {isRefreshing ? "Refreshing..." : "Refresh"}
         </Button>
       </div>
