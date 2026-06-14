@@ -242,7 +242,7 @@ export function RegistrationCard({
             </div>
 
             {/* Source Details link */}
-            {registration.sourceLink && (
+            {/* {registration.sourceLink && (
               <div className="bg-white/3 border border-white/5 rounded-xl p-4 flex flex-col gap-1">
                 <span className="text-[10px] text-white/40 uppercase tracking-wider">
                   Complete Source URL
@@ -256,7 +256,7 @@ export function RegistrationCard({
                   {registration.sourceLink}
                 </a>
               </div>
-            )}
+            )} */}
           </div>
         </div>
       </div>
